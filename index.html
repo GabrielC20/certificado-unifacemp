@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Painel de Certificados</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="img-sidebar">
+                <img src="src/img/logo-1-1024x496.png" alt="Logo Unifacemp" width="120px">
+            </div>
+            <div class="sidebar-header">📜 Certificados</div>
+            <nav class="menu">
+                <div class="menu-item active" data-tab="design-tab">🎨 Design</div>
+                <div class="menu-item" data-tab="import-tab">📂 Importar</div>
+                <div class="menu-item" data-tab="generate-tab">⚡ Gerar</div>
+                <div class="menu-item" data-tab="manage-tab">📑 Gerenciar</div>
+                <div class="menu-item" data-tab="sair">🚪Sair</div>
+            </nav>
+        </aside>
+
+
+        <main class="main-content">
+
+            <div id="design-tab" class="tab-content active">
+                <h2>🎨 Personalize seu Certificado</h2>
+
+                <div class="form-group">
+                    <label for="certificate-title">Título do Certificado</label>
+                    <input type="text" id="certificate-title" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="course-name">Nome do Curso/Evento</label>
+                    <input type="text" id="course-name" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="certificate-text">Texto do Certificado</label>
+                    <textarea id="certificate-text" rows="4">
+Certificamos que [NOME] participou do curso [CURSO], realizado em [DATA], com carga horária de [CARGA_HORARIA] horas.
+                    </textarea>
+                </div>
+
+                <div class="form-colors">
+                    <div class="form-group">
+                        <label for="background-color">Cor de Fundo</label>
+                        <input type="color" id="background-color" value="#ffffff">
+                    </div>
+                    <div class="form-group">
+                        <label for="text-color">Cor do Texto</label>
+                        <input type="color" id="text-color" value="#000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="border-color">Cor da Borda</label>
+                        <input type="color" id="border-color" value="#3498db">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="font-family">Fonte do Certificado</label>
+                    <select id="font-family">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Georgia', serif">Georgia</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="'Roboto', sans-serif">Roboto</option>
+                        <option value="'Open Sans', sans-serif">Open Sans</option>
+                        <option value="'Lobster', cursive">Lobster (decorativa)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="border-style">Estilo da Borda</label>
+                    <select id="border-style">
+                        <option value="classic">Clássica (Dupla)</option>
+                        <option value="elegant">Elegante (Fina)</option>
+                        <option value="ornate">Ornamentada</option>
+                        <option value="modern">Moderna (Angular)</option>
+                        <option value="vintage">Vintage</option>
+                        <option value="none">Sem Borda</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="background-image-upload">Imagem de Fundo/Moldura</label>
+                    <input type="file" id="background-image-upload" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="logo-upload">Upload do Logo</label>
+                    <input type="file" id="logo-upload" accept="image/*">
+                </div>
+
+
+                <button class="btn-primary" id="update-preview-btn">🔄 Atualizar Visualização</button>
+
+                <h3>Pré-visualização</h3>
+                <div id="certificate-preview"></div>
+            </div>
+
+
+            <div id="import-tab" class="tab-content">
+                <h2>📂 Importar Lista de Participantes</h2>
+
+                <div class="form-group">
+                    <label for="participants-file">Arquivo CSV (Nome,CPF,Email,CargaHorária)</label>
+                    <input type="file" id="participants-file" accept=".csv">
+                </div>
+
+                <button class="btn-primary" id="import-participants-btn">📥 Importar Participantes</button>
+
+                <h3>Participantes Importados</h3>
+                <div class="table-container">
+                    <table id="participants-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>E-mail</th>
+                                <th>Carga Horária</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participants-list"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div id="generate-tab" class="tab-content">
+                <h2>⚡ Gerar Certificados</h2>
+
+                <div class="form-group">
+                    <label for="event-date">Data do Evento</label>
+                    <input type="date" id="event-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="workload">Carga Horária Padrão (horas)</label>
+                    <input type="number" id="workload" value="40" min="1" required>
+                </div>
+
+                <button class="btn-primary" id="generate-certificates-btn">🚀 Gerar Todos os Certificados</button>
+                <button class="btn-secondary" id="download-all-btn">⬇️ Baixar Todos (PDF)</button>
+
+                <div id="generation-progress">
+                    <div class="progress-bar">
+                        <div id="progress" class="progress">0%</div>
+                    </div>
+                    <div id="progress-text">Aguardando geração...</div>
+                </div>
+            </div>
+
+
+            <div id="manage-tab" class="tab-content">
+                <h2>📑 Certificados Gerados</h2>
+
+                <div class="table-container">
+                    <table id="certificates-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="certificates-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+    <!-- Autenticação -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAoIWVztNUp3l8kPOaX0hyheiGcfO9WiZ4",
+            authDomain: "autenticacao-dda30.firebaseapp.com",
+            projectId: "autenticacao-dda30",
+            storageBucket: "autenticacao-dda30.firebasestorage.app",
+            messagingSenderId: "414903100262",
+            appId: "1:414903100262:web:02d893dc79069248bcdea7",
+            measurementId: "G-VT8TNZNQKR"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script>
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                window.location.replace("login.html");
+            } else {
+                history.pushState(null, "", location.href);
+                window.onpopstate = () => history.pushState(null, "", location.href);
+            }
+        });
+    </script>
+
+    <script src="src/js/script.js"></script>
+
+
+    <script>
+        document.querySelector('[data-tab="sair"]').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                sessionStorage.clear();
+                window.location.replace("login.html");
+            }).catch((error) => {
+                console.error("Erro ao sair:", error);
+            });
+        });
+    </script>
+
+
+    <script>
+        history.pushState(null, "", location.href);
+        window.onpopstate = function () {
+            history.pushState(null, "", location.href);
+        };
+    </script>
+</body>
+
+
+
+</html>

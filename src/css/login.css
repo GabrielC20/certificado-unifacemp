@@ -1,43 +1,102 @@
 body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #e4e9ff, #f4f6f9);
-  color: #333;
+  font-family: 'Inter', sans-serif;
+  background-image: url(..//img/imagemfundo.png);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0;
+  min-height: 100vh;
 }
 
-.container-login {
-  width: 350px;
-  min-height: 300px;
+.login-container {
+  width: 400px;
+  padding: 2.5rem;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.bg-primary{
-    background-color: #2b457d !important;
+.login-logo {
+  width: 300px;
+  height: auto;
 }
 
-.container-login h2 {
-  letter-spacing: 1px;
+.login-header h2 {
+  color: #2b457d;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 3vh !important;
 }
 
-.container-login .form-control {
-  border-radius: 10px;
-  border: none;
-  padding: 12px;
+.login-header p {
+  color: #6c757d;
+  font-size: 0.9rem;
 }
 
-.container-login .btn {
-  border-radius: 10px;
-  padding: 12px;
-  transition: 0.3s ease;
+.form-floating {
+  position: relative;
 }
 
-.container-login .btn:hover {
+.form-floating .form-control {
+  height: 56px;
+  padding-left: 45px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
   background-color: #f8f9fa;
-  color: #0d6efd;
+  transition: all 0.3s ease;
 }
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease-out;
+.form-floating .form-control:focus {
+  border-color: #2b457d;
+  box-shadow: 0 0 0 3px rgba(43, 69, 125, 0.1);
+  background-color: #fff;
 }
 
+.form-floating label {
+  color: #6c757d;
+  padding-left: 45px;
+}
+
+.form-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  z-index: 5;
+}
+
+.form-floating .form-control:focus ~ .form-icon {
+  color: #2b457d;
+}
+
+.btn-primary {
+  background-color: #2b457d;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d3557;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 69, 125, 0.2);
+}
+
+a {
+  color: #2b457d;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1d3557;
+}
+
+.form-check-input:checked {
+  background-color: #2b457d;
+  border-color: #2b457d;
+}
 

@@ -1,54 +1,70 @@
-
 body {
     font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     background: #f4f6f9;
     color: #333;
+    overflow-x: hidden;
 }
-
 
 .container {
     display: flex;
     min-height: 100vh;
+    flex-direction: column;
 }
-.app-title{
+
+.app-title {
     margin-top: 14px;
 }
 
 .sidebar {
-    width: 240px;
+    width: 100%;
     background: linear-gradient(180deg, #2c3e50, #1a252f);
     color: #ecf0f1;
-    padding: 30px 20px;
+    padding: 20px 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    order: 1;
 }
 
-.img-sidebar{
+.img-sidebar {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .sidebar h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 15px;
     font-weight: bold;
     text-align: center;
 }
 
+.menu-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 8px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
 .menu-item {
-    padding: 12px 15px;
+    padding: 10px 12px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 15px;
+    font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    white-space: nowrap;
 }
 
 .menu-item:hover {
@@ -62,28 +78,28 @@ body {
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15);
 }
 
-
 .main-content {
     flex: 1;
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    order: 2;
 }
 
 h1 {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
-    margin: 0 0 20px;
+    margin: 0 0 15px;
     text-align: center;
     color: #2c3e50;
 }
 
 h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 15px;
     color: #34495e;
     border-left: 4px solid #3498db;
-    padding-left: 10px;
+    padding-left: 8px;
 }
 
 .tab-content {
@@ -95,25 +111,26 @@ h2 {
 }
 
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     color: #555;
 }
 
 input, textarea, select {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #f9fafb;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -123,17 +140,18 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 6px rgba(52, 152, 219, 0.2);
 }
 
-
 button {
     background: #3498db;
     color: white;
     border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
+    padding: 10px 15px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
     transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 5px;
 }
 
 button:hover {
@@ -141,32 +159,36 @@ button:hover {
     transform: translateY(-1px);
 }
 
-
 #certificate-preview {
     border: 1px dashed #ccc;
     background-color: white;
-    margin: 20px auto;
+    margin: 15px auto;
     position: relative;
-    width: 1123px;  
-    height: 794px;  
+    width: 100%;
+    max-width: 1123px;
+    height: auto;
+    aspect-ratio: 1123 / 794;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
+
 .certificate-template {
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 5%;
     box-sizing: border-box;
     text-align: center;
     position: relative;
+    transform-origin: top left;
 }
-
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    border-radius: 8px;
+    margin-top: 15px;
+    border-radius: 6px;
     overflow: hidden;
+    font-size: 13px;
 }
 
 table thead {
@@ -174,9 +196,8 @@ table thead {
 }
 
 table th, table td {
-    padding: 12px;
+    padding: 8px 10px;
     text-align: left;
-    font-size: 14px;
     border-bottom: 1px solid #eaeaea;
 }
 
@@ -185,45 +206,108 @@ table th {
     color: #555;
 }
 
-
 .progress-bar {
     width: 100%;
     background: #eaeaea;
-    border-radius: 6px;
+    border-radius: 4px;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .progress {
-    height: 20px;
+    height: 15px;
     background: linear-gradient(90deg, #4CAF50, #45a049);
     text-align: center;
-    line-height: 20px;
+    line-height: 15px;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     transition: width 0.3s ease;
 }
-
-
-.certificate-template {
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    font-family: "Georgia", serif;
-}
-
-#generation-progress {
-  display: none; 
-}
-
-
 
 input[type="file"] {
     background: #fff;
     border: 1px dashed #ccc;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
+    width: 100%;
+}
+
+#generation-progress {
+    display: none;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+    
+    .sidebar {
+        width: 240px;
+        padding: 30px 20px;
+        order: 0;
+    }
+    
+    .menu-container {
+        overflow-x: visible;
+        flex-direction: column;
+    }
+    
+    .menu-items {
+        flex-direction: column;
+    }
+    
+    .menu-item {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+    
+    .main-content {
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 26px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    button {
+        width: auto;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    table th, table td {
+        padding: 12px;
+    }
+}
+
+@media (min-width: 992px) {
+    #certificate-preview {
+        height: 794px;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #certificate-preview, #certificate-preview * {
+        visibility: visible;
+    }
+    #certificate-preview {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
 }
